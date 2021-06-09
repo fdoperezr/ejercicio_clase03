@@ -21,6 +21,7 @@ export default function SuperHeroList({ handlerSetSuperhero }: ToggleSetSuperHer
                         <th >Nombre</th>
                         <th >Editorial</th>
                         <th >Alter ego</th>
+                        <th >Primera aparición</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@ export default function SuperHeroList({ handlerSetSuperhero }: ToggleSetSuperHer
                                 <td> { item.name } </td>
                                 <td> { item.publisher } </td>
                                 <td> { item.alter_ego } </td>
+                                <td> { item.first_appearance } </td>
                             </tr>
                         ))
                     }

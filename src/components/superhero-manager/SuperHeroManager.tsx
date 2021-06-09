@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Guid } from "guid-typescript";
 import { SuperHero } from '../../interfaces/SuperHero'
 import { useSelector, useDispatch } from 'react-redux'
 import { insertSuperHero, updateSuperHero } from '../../store/module/superheroes/actions'
@@ -29,11 +28,6 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
         event.preventDefault();
         if (currentSuperHero == '')
         {
-            setsuperhero({
-                ...superhero,
-                id: Guid.create().toString()
-            })
-            debugger
             dispatch(insertSuperHero(superhero))
             alert('Super Héroe ingresado correctamente');
             setEmptySuperHero()
@@ -43,11 +37,6 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
             dispatch(updateSuperHero(superhero))
             alert('Super Héroe actualizado correctamente');
         }
-      
-       
-        
-        
-
     };
 
     const setEmptySuperHero= () => {
@@ -66,7 +55,6 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
     };
 
     const hanlderInput = (event: any): void => {
-        debugger
         setsuperhero({
             ...superhero,
             [event.target.name]: event.target.value
@@ -146,7 +134,7 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
                                 <label className="form-label"
                                     htmlFor="email"
                                 >
-                                    Primera aparación
+                                    Primera aparición
                                     </label>
                                 <input className="form-control"
                                     type="text"

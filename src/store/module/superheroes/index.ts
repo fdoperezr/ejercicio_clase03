@@ -1,7 +1,7 @@
 
 import { SuperHeroes } from '../../../data/SuperHeroes'
 import { SuperHero } from '../../../interfaces/SuperHero'
-
+import { Guid } from "guid-typescript";
 const inicialState = {
     superheroes : SuperHeroes
 }
@@ -12,8 +12,10 @@ const superHeroesReducer = (prevState: any = inicialState, action: any) => {
     switch (action.type) {
         
         case 'SUPERHERO_ADD':
+            const superHeroInsert: SuperHero = action.payload;
+            superHeroInsert.id = Guid.create().toString()
             return {
-                superheroes: [...prevState.superheroes, action.payload],
+                superheroes: [...prevState.superheroes, superHeroInsert],
             }
         case 'SUPERHERO_UPDATE':
             

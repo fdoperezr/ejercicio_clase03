@@ -9,6 +9,7 @@ import {
 export default function SuperHeroActions(props: { id: string, handlerSetSuperhero: (newSuperhero: string) => void}) {
 
     const superHeroes = useSelector(superheroesSelector)
+    
     const dispatch = useDispatch()
     const onClickHandler = () =>{
         dispatch(deleteSuperHero(props.id.toString()))

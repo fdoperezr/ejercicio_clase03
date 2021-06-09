@@ -1,12 +1,16 @@
 import React from 'react'
-import UserList from '../../components/user-list/UserList'
+import { Provider } from 'react-redux'
+import SuperHeroList from '../../components/superhero-list/SuperHeroList'
+import store from '../../store';
 
 export default function Home() {
     return (
-        <div className='container'>
+        <Provider store={store}>
+            <div className='container'>
 
-            <UserList />
+                <SuperHeroList />
 
-        </div>
+            </div>
+        </Provider>
     )
 }

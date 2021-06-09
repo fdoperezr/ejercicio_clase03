@@ -4,7 +4,7 @@ import { SuperHero } from "../../../interfaces/SuperHero"
 export const deleteSuperHero = (id: string) => {
     return {
         type: 'SUPERHERO_DELETE',
-        payload: id,
+        payload: {id},
     }
 }
 

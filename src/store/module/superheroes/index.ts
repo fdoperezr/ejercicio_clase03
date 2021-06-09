@@ -2,7 +2,12 @@
 import { SuperHeroes } from '../../../data/SuperHeroes'
 import { SuperHero } from '../../../interfaces/SuperHero'
 
-const superHeroesReducer = (prevState: SuperHero[] = SuperHeroes, action: any) => {
+const inicialState = {
+    superheroes : SuperHeroes
+}
+
+
+const superHeroesReducer = (prevState: any = inicialState, action: any) => {
     switch (action.type) {
         /* payload { name: '', id: new Date().getTime() } */
         case 'SUPERHERO_ADD':
@@ -20,8 +25,20 @@ const superHeroesReducer = (prevState: SuperHero[] = SuperHeroes, action: any) =
                 users: nL,
             }
         case 'SUPERHERO_DELETE':
+            const idDelete: string = action.payload.id;
+            const superheroesCopia = [...prevState.superheroes]
+            debugger
+            const superHero = superheroesCopia.find((i: SuperHero) => i.id.toString() == idDelete)
+            if (superHero != undefined)
+            {
+                const index = superheroesCopia.indexOf(superHero);
+                if (index > -1) {
+                    superheroesCopia.splice(index, 1);
+                }
+            }
+          
             return {
-                users: [],
+                superheroes: superheroesCopia
             }
 
         case 'SUPERHERO_GET':

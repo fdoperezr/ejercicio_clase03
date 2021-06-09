@@ -11,25 +11,26 @@ import {
 export default function SuperHeroList() {
 
     const superHeroes = useSelector(superheroesSelector)
- 
+    console.log(superHeroes);
+    
     
     return (
         <>
-            <table className="mt-5 table table-bordered table-hover">
+            <table className="mt-5 table table-sm table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th style={{ width: 10 }}>Acciones</th>
-                        <th style={{ width: 50 }}>Nombre</th>
-                        <th style={{ width: 50 }}>Editorial</th>
-                        <th style={{ width: 50 }}>Alter ego</th>
+                        <th style={{ width: 150}}>Acciones</th>
+                        <th >Nombre</th>
+                        <th >Editorial</th>
+                        <th >Alter ego</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     {
-                        superHeroes.map(( item : SuperHero) => (
+                        superHeroes.superheroes.map(( item : SuperHero) => (
                             <tr key={item.id}>
-                                <td>
+                                <td style={{textAlign: 'center'}}>
                                    <SuperHeroActions id={item.id}/>
                                 </td>
                                 <td> { item.superhero } </td>

@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 
 import { SuperHero } from '../../interfaces/SuperHero'
-import { getSuperHero } from '../../store/module/superheroes/actions'
+import styles  from './SuperHeroCard.module.css'
 
 
 export default function SuperHeroCard() {
@@ -17,26 +17,27 @@ export default function SuperHeroCard() {
     const location = useLocation()
     const params: any = useParams()
     const dispatch = useDispatch()
-    
+
 
     useEffect(() => {
-        
-        setsuperHero(superHeroes.filter((i: { id: string }) => i.id == params.id)[0])
-        
+
+        setsuperHero(superHeroes.superheroes.filter((i: { id: string }) => i.id == params.id)[0])
+
     }, [location])
 
 
     return (
         <>
-            <div className="container mt-5">
-            <div className="card">
-                <img src="" className="card-img-top" alt="..."/>
+            <div className="d-flex justify-content-center mt-5">
+                <div className="card">
+                    <img src="https://dummyimage.com/400x400/000/fff" alt="" className={`card-img-top ${styles.imagenFicha}`} />
                     <div className="card-body">
                         <h5 className="card-title">{superHero?.superhero}</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <h6 className="card-subtitle mb-2 text-muted">{superHero?.alter_ego}</h6>
+                        <p className="card-text">Editorial: {superHero?.publisher}</p>
+                        <p className="card-text">Primera aparición: {superHero?.first_appearance}</p>
                     </div>
-            </div>
+                </div>
             </div>
         </>
     )

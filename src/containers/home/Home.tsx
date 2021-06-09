@@ -5,12 +5,14 @@ import store from '../../store';
 
 export default function Home() {
     return (
-        <Provider store={store}>
-            <div className='container'>
+        <div className='container'>
 
-                <SuperHeroList />
-
+            <div className="row">
+                <div className="col-7">
+                    <SuperHeroList/>
+                </div>
             </div>
-        </Provider>
+
+        </div>
     )
 }

@@ -16,7 +16,6 @@ export default function SuperHeroCard() {
     const superHeroes = useSelector(superheroesSelector)
     const location = useLocation()
     const params: any = useParams()
-    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -32,7 +31,7 @@ export default function SuperHeroCard() {
                 <div className="card">
                     <img src="https://dummyimage.com/400x400/000/fff" alt="" className={`card-img-top ${styles.imagenFicha}`} />
                     <div className="card-body">
-                        <h5 className="card-title">{superHero?.superhero}</h5>
+                        <h5 className="card-title">{superHero?.name}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">{superHero?.alter_ego}</h6>
                         <p className="card-text">Editorial: {superHero?.publisher}</p>
                         <p className="card-text">Primera aparición: {superHero?.first_appearance}</p>

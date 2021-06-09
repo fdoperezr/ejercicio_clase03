@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { SuperHeroes } from '../../data/SuperHeroes'
 import { SuperHero } from '../../interfaces/SuperHero'
 import { superheroesSelector } from '../../store/module/superheroes/selectors'
 import SuperHeroActions from '../superhero-actions/SuperHeroActions'
-import {
-    Link,
-} from 'react-router-dom'
+import { ToggleSetSuperHeroProps } from '../../interfaces/ToggleSetSuperHeroProps'
 
-export default function SuperHeroList() {
+
+export default function SuperHeroList({ handlerSetSuperhero }: ToggleSetSuperHeroProps) {
 
     const superHeroes = useSelector(superheroesSelector)
     console.log(superHeroes);
@@ -31,9 +29,9 @@ export default function SuperHeroList() {
                         superHeroes.superheroes.map(( item : SuperHero) => (
                             <tr key={item.id}>
                                 <td style={{textAlign: 'center'}}>
-                                   <SuperHeroActions id={item.id}/>
+                                   <SuperHeroActions id={item.id} handlerSetSuperhero={handlerSetSuperhero} />
                                 </td>
-                                <td> { item.superhero } </td>
+                                <td> { item.name } </td>
                                 <td> { item.publisher } </td>
                                 <td> { item.alter_ego } </td>
                             </tr>

@@ -8,26 +8,33 @@ const inicialState = {
 
 
 const superHeroesReducer = (prevState: any = inicialState, action: any) => {
+    const superheroesCopia: SuperHero[] = [...prevState.superheroes]
     switch (action.type) {
-        /* payload { name: '', id: new Date().getTime() } */
+        
         case 'SUPERHERO_ADD':
             return {
-                superheroes: [...prevState, action.payload],
+                superheroes: [...prevState.superheroes, action.payload],
             }
         case 'SUPERHERO_UPDATE':
-            /* payload { id: 1231231341234234, name: 'Juan' } */
-            const id = action.payload.id
-            const nL = prevState.map((u: SuperHero) => {
-                if (u.id === id) return action.payload
-                return u
-            })
+            
+            const superHeroPayload: SuperHero = action.payload
+            const superHeroUpdate = superheroesCopia.find((i: SuperHero) => i.id == superHeroPayload.id)
+            if (superHeroUpdate != undefined)
+            {
+                const index = superheroesCopia.indexOf(superHeroUpdate);
+                if (index > -1) {
+                    superheroesCopia[index].name = superHeroPayload.name;
+                    superheroesCopia[index].publisher = superHeroPayload.publisher;
+                    superheroesCopia[index].alter_ego = superHeroPayload.alter_ego;
+                    superheroesCopia[index].first_appearance = superHeroPayload.first_appearance;
+                    superheroesCopia[index].characters = superHeroPayload.characters;
+                }
+            }
             return {
-                users: nL,
+                superheroes: superheroesCopia
             }
         case 'SUPERHERO_DELETE':
             const idDelete: string = action.payload.id;
-            const superheroesCopia = [...prevState.superheroes]
-            debugger
             const superHero = superheroesCopia.find((i: SuperHero) => i.id.toString() == idDelete)
             if (superHero != undefined)
             {
@@ -40,13 +47,6 @@ const superHeroesReducer = (prevState: any = inicialState, action: any) => {
             return {
                 superheroes: superheroesCopia
             }
-
-        case 'SUPERHERO_GET':
-            const sh = prevState.map((u: SuperHero) => {
-                if (u.id === id) return action.payload
-                return u
-            })
-            return null
         default:
             return prevState
     }

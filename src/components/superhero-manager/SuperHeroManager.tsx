@@ -13,7 +13,7 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
     const currentSuperHero: string = useContext<string>(SuperHeroContext);
     const superHeroes = useSelector(superheroesSelector)
     const [superhero, setsuperhero] = useState<SuperHero>({
-        id: '',
+        id: ' ',
         name: '',
         publisher: '',
         alter_ego: '',
@@ -41,7 +41,7 @@ export default function SuperHeroManager({ handlerSetSuperhero }: ToggleSetSuper
 
     const setEmptySuperHero= () => {
         setsuperhero({
-            id: '',
+            id: ' ',
             name: '',
             publisher: '',
             alter_ego: '',

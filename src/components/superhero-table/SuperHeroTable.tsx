@@ -6,12 +6,10 @@ import SuperHeroActions from '../superhero-actions/SuperHeroActions'
 import { ToggleSetSuperHeroProps } from '../../interfaces/ToggleSetSuperHeroProps'
 
 
-export default function SuperHeroList({ handlerSetSuperhero }: ToggleSetSuperHeroProps) {
+export default function SuperHeroTable({ handlerSetSuperhero }: ToggleSetSuperHeroProps) {
 
     const superHeroes = useSelector(superheroesSelector)
-    console.log(superHeroes);
-    
-    
+
     return (
         <>
             <table className="mt-5 table table-sm table-bordered table-hover">

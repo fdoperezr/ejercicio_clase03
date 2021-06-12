@@ -25,11 +25,12 @@ const superHeroesReducer = (prevState: any = inicialState, action: any) => {
             {
                 const index = superheroesCopia.indexOf(superHeroUpdate);
                 if (index > -1) {
-                    superheroesCopia[index].name = superHeroPayload.name;
-                    superheroesCopia[index].publisher = superHeroPayload.publisher;
-                    superheroesCopia[index].alter_ego = superHeroPayload.alter_ego;
-                    superheroesCopia[index].first_appearance = superHeroPayload.first_appearance;
-                    superheroesCopia[index].characters = superHeroPayload.characters;
+                    superheroesCopia[index] = { ...superHeroPayload }
+                    // superheroesCopia[index].name = superHeroPayload.name;
+                    // superheroesCopia[index].publisher = superHeroPayload.publisher;
+                    // superheroesCopia[index].alter_ego = superHeroPayload.alter_ego;
+                    // superheroesCopia[index].first_appearance = superHeroPayload.first_appearance;
+                    // superheroesCopia[index].characters = superHeroPayload.characters;
                 }
             }
             return {
